@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express();
-const uuid = require('uuid/v4');
+const xss = require('xss')
 const BookarkService = require('./bookmarks-service')
 const bookmarkRouter = express.Router()
 const bodyParser = express.json()
@@ -39,7 +39,7 @@ app.use(function errorHandler(error, req, res, next) {
 
 bookmarkRouter
   .route('/bookmark')
-  .post(bodyParser, (req, res) => {
+  .post(bodyParser, (req, res, next) => {
 
     const { title, url, rating, description } = req.body;
 
