@@ -28,6 +28,6 @@ app.use(function validateBearerToken(req, res, next) {
   next()
 })
 
-app.use(bookmarkRouter)
+app.use('/api/bookmarks', bookmarkRouter)
 
 module.exports = app
